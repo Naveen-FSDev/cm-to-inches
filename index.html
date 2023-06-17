@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Length Converter</title>
+    <title>FD Rate Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="wrapper">
-    <h2>cm to inches</h2>
+    <h2>FD Rate Calculator</h2>
         <div class="inputdiv">
-                <input type="text" id="input" placeholder="length in cm"/>
+                <input type="text" id="input" placeholder="tenure months"/>
         </div>
         <div>
-            <button type="submit" onclick="convert()">Convert to inches</button>
+            <button type="submit" onclick="fdRate()">Calculate</button>
         </div>
         <div id="result">
 
@@ -23,11 +23,22 @@
 </div>  
 
 <script>
-    function convert() {
-    const cmVal=Number(document.getElementById("input").value);
-    const inchVal=cmVal/2.24
-    const result = document.getElementById("result")
-    result.innerHTML=inchVal.toFixed(2) + " inches"
+    function fdRate() {
+    const months=Number(document.getElementById("input").value)
+    //else if ladder
+    let rate = 0
+    if(months<3)
+        rate=5.8
+    else if(months>=3 && months<=6)
+        rate=6.5
+    else if(months>=7 && months<=9)
+        rate=6.8
+    else
+        rate=7
+
+
+    let result=document.querySelector("#result")
+    result.innerHTML = "Your Interest rate is "+ rate + "%"
     }
 </script>
 </body>
